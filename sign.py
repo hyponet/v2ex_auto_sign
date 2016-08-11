@@ -22,10 +22,11 @@ def sign():
     resp = session.get('http://v2ex.com/mission/daily')
 
     if u'每日登录奖励已领取' in resp.text:
-        print(u'已领取')
+        print(u'already get it!')
     else:
         try:
             resp = session.get('http://v2ex.com' + re.search(r'/mission/daily/redeem\?once=\d+', resp.text).group())
             print(resp.ok)
+            print(u'\nget it!')
         except:
-            print(u"登陆失败")
+            print(u"username or password error!")
